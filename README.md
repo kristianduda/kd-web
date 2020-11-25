@@ -26,6 +26,7 @@
 
 * [auth](#module_auth)
     * [.auth(username, password, [token])](#module_auth.auth) ⇒ <code>Object</code>
+    * [.register(username, password, name)](#module_auth.register) ⇒ <code>Object</code>
     * [.oAuth(provider, code, redirectUri, [configId])](#module_auth.oAuth) ⇒ <code>Object</code>
     * [.reset(username, redirectUri)](#module_auth.reset)
     * [.updateOauth(provider, code, redirectUri)](#module_auth.updateOauth) ⇒ <code>Object</code>
@@ -50,6 +51,20 @@ Authenticate user.
 | username | <code>string</code> | Username. |
 | password | <code>string</code> | Password. |
 | [token] | <code>string</code> | 2FA token. |
+
+<a name="module_auth.register"></a>
+
+### auth.register(username, password, name) ⇒ <code>Object</code>
+Register user.
+
+**Kind**: static method of [<code>auth</code>](#module_auth)  
+**Returns**: <code>Object</code> - user.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| username | <code>string</code> | Username. |
+| password | <code>string</code> | Password. |
+| name | <code>string</code> | Name. |
 
 <a name="module_auth.oAuth"></a>
 
