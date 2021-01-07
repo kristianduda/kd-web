@@ -1,5 +1,6 @@
 import * as s from "./store";
 import * as a from "./auth";
+import * as x from './ajax';
 import * as storage from "./storage";
 
 const DEFAULT_CONFIG = {
@@ -59,4 +60,13 @@ const auth = {
   register: (username, password, name) => a.register(_config, username, password, name),
 }
 
-export { init, getConfig, store, auth, storage };
+const ajax = {
+  getById: (url, id) => x.getById(_config, url, id),
+  get: (url, filters, sort, page, fields) => x.get(_config, url, filters, sort, page, fields),
+  put: (url, data, id) => x.put(_config, url, data, id),
+  post: (url, data) => x.post(_config, url, data),
+  delById: (url, id) => x.delById(_config, url, id),
+  del: (url, filters) => x.del(_config, url, filters),
+}
+
+export { init, getConfig, store, auth, storage, ajax };
