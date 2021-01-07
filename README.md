@@ -1,6 +1,8 @@
 ## Modules
 
 <dl>
+<dt><a href="#module_ajax">ajax</a></dt>
+<dd></dd>
 <dt><a href="#module_auth">auth</a></dt>
 <dd></dd>
 <dt><a href="#module_storage">storage</a></dt>
@@ -19,6 +21,98 @@
 <dd><p>Get config.</p>
 </dd>
 </dl>
+
+<a name="module_ajax"></a>
+
+## ajax
+
+* [ajax](#module_ajax)
+    * [.getById(url, id)](#module_ajax.getById) ⇒ <code>Object</code>
+    * [.get(url, [filters], [sort], [page], [fields])](#module_ajax.get) ⇒ <code>Object</code>
+    * [.put(url, data, id)](#module_ajax.put) ⇒ <code>Object</code>
+    * [.post(url, data)](#module_ajax.post) ⇒ <code>Object</code>
+    * [.delById(url, id)](#module_ajax.delById)
+    * [.del(url, filters)](#module_ajax.del)
+
+<a name="module_ajax.getById"></a>
+
+### ajax.getById(url, id) ⇒ <code>Object</code>
+Get document.
+
+**Kind**: static method of [<code>ajax</code>](#module_ajax)  
+**Returns**: <code>Object</code> - document.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>string</code> | Url. |
+| id | <code>string</code> | Document id. |
+
+<a name="module_ajax.get"></a>
+
+### ajax.get(url, [filters], [sort], [page], [fields]) ⇒ <code>Object</code>
+Get collection of documents that match a specified filter.
+
+**Kind**: static method of [<code>ajax</code>](#module_ajax)  
+**Returns**: <code>Object</code> - collection of documents.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>string</code> | Url. |
+| [filters] | <code>Object</code> | Filters. |
+| [sort] | <code>Object</code> | Sort. |
+| [page] | <code>Object</code> | Page. |
+| [fields] | <code>Object</code> | Fields. |
+
+<a name="module_ajax.put"></a>
+
+### ajax.put(url, data, id) ⇒ <code>Object</code>
+Update document in collection.
+
+**Kind**: static method of [<code>ajax</code>](#module_ajax)  
+**Returns**: <code>Object</code> - document.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>string</code> | Url. |
+| data | <code>Object</code> | Data. |
+| id | <code>string</code> | Document id. |
+
+<a name="module_ajax.post"></a>
+
+### ajax.post(url, data) ⇒ <code>Object</code>
+Insert document to collection.
+
+**Kind**: static method of [<code>ajax</code>](#module_ajax)  
+**Returns**: <code>Object</code> - document.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>string</code> | Url. |
+| data | <code>Object</code> | Data. |
+
+<a name="module_ajax.delById"></a>
+
+### ajax.delById(url, id)
+Delete document in collection.
+
+**Kind**: static method of [<code>ajax</code>](#module_ajax)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>string</code> | Url. |
+| id | <code>string</code> | Document Id. |
+
+<a name="module_ajax.del"></a>
+
+### ajax.del(url, filters)
+Delete documents in collection.
+
+**Kind**: static method of [<code>ajax</code>](#module_ajax)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>string</code> | Url. |
+| filters | <code>Object</code> | Filters. |
 
 <a name="module_auth"></a>
 
