@@ -2,6 +2,7 @@
 
 import * as core from "./core";
 import * as storage from "./storage";
+import * as ajax from "./ajax";
 
 /**
  * Insert file.
@@ -87,22 +88,9 @@ export const delFile = async (config, id) => {
  * @param {string} id - Document id.
  * @returns {Object} document.
  */
-export const getById = async (config, collection, id) => {
-  const url = `${config.url.store}/api/store/${collection}/${id}`;
-
-  const response = await fetch(url, {
-    headers: core.getHeaders()
-  });
-
-  if (response.status === 200) {
-    return await response.json();
-  } else if (response.status === 404) {
-    return null;
-  } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await getById(config, collection, id);
-  } else {
-    throw new Error(response.statusText);
-  }
+export const getById = (config, collection, id) => {
+  const url = `${config.url.store}/api/store/${collection}`;
+  return ajax.getById(config, url, id);
 };
 
 /**
@@ -115,7 +103,7 @@ export const getById = async (config, collection, id) => {
  * @param {Object=} fields - Fields.
  * @returns {Object} collection of documents.
  */
-export const get = async (
+export const get = (
   config,
   collection,
   filters = core.DEFAULT_FILTERS,
@@ -123,30 +111,8 @@ export const get = async (
   page = core.DEFAULT_PAGE,
   fields = core.DEFAULT_FIELDS
 ) => {
-  const url = `${
-    config.url.store
-  }/api/store/${collection}?filters=${JSON.stringify(
-    filters
-  )}&page=${JSON.stringify(page)}&sort=${JSON.stringify(
-    sort
-  )}&fields=${JSON.stringify(fields)}`;
-
-  const response = await fetch(url, {
-    headers: core.getHeaders()
-  });
-
-  if (response.status === 200) {
-    const res = await response.json();
-    res.filters = filters;
-    res.sort = sort;
-    res.page = page;
-    res.fields = fields;
-    return res;
-  } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await get(config, collection, filters, sort, page, fields);
-  } else {
-    throw new Error(response.statusText);
-  }
+  const url = `${config.url.store}/api/store/${collection}`;
+  return ajax.get(config, url, filters, sort, page, fields);
 };
 
 /**
@@ -157,21 +123,9 @@ export const get = async (
  * @param {string} id - Document id.
  * @returns {Object} document.
  */
-export const put = async (config, collection, data, id) => {
-  const url = `${config.url.store}/api/store/${collection}/${id}`;
-  const response = await fetch(url, {
-    method: "PUT",
-    headers: core.getHeaders(),
-    body: JSON.stringify(data)
-  });
-
-  if (response.status === 200) {
-    return await response.json();
-  } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await put(config, collection, data, id);
-  } else {
-    throw new Error(response.statusText);
-  }
+export const put = (config, collection, data, id) => {
+  const url = `${config.url.store}/api/store/${collection}`;
+  return ajax.put(config, url, data, id);
 };
 
 /**
@@ -181,22 +135,9 @@ export const put = async (config, collection, data, id) => {
  * @param {Object} data - Data.
  * @returns {Object} document.
  */
-export const post = async (config, collection, data) => {
+export const post = (config, collection, data) => {
   const url = `${config.url.store}/api/store/${collection}`;
-
-  const response = await fetch(url, {
-    method: "POST",
-    headers: core.getHeaders(),
-    body: JSON.stringify(data)
-  });
-
-  if (response.status === 200) {
-    return await response.json();
-  } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await post(config, collection, data);
-  } else {
-    throw new Error(response.statusText);
-  }
+  return ajax.post(config, url, data);
 };
 
 /**
@@ -205,20 +146,9 @@ export const post = async (config, collection, data) => {
  * @param {string} collection - Collection.
  * @param {string} id - Document Id.
  */
-export const delById = async (config, collection, id) => {
-  const url = `${config.url.store}/api/store/${collection}/${id}`;
-
-  const response = await fetch(url, {
-    method: "DELETE",
-    headers: core.getHeaders()
-  });
-
-  if (response.status === 200) {
-  } else if (response.status === 401 && (await core.refreshToken(config))) {
-    await delById(config, collection, id);
-  } else {
-    throw new Error(response.statusText);
-  }
+export const delById = (config, collection, id) => {
+  const url = `${config.url.store}/api/store/${collection}`;
+  return ajax.delById(config, url, id);
 };
 
 /**
@@ -227,22 +157,9 @@ export const delById = async (config, collection, id) => {
  * @param {string} collection - Collection.
  * @param {Object} filters - Filters.
  */
-export const del = async (config, collection, filters) => {
-  const url = `${
-    config.url.store
-  }/api/store/${collection}?filters=${JSON.stringify(filters)}`;
-
-  const response = await fetch(url, {
-    method: "DELETE",
-    headers: core.getHeaders()
-  });
-
-  if (response.status === 200) {
-  } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await del(config, collection, filters);
-  } else {
-    throw new Error(response.statusText);
-  }
+export const del = (config, collection, filters) => {
+  const url = `${config.url.store}/api/store/${collection}`;
+  return ajax.del(config, url, filters);
 };
 
 /**
