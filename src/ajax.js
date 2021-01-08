@@ -1,7 +1,6 @@
 /** @module ajax */
 
 import * as core from "./core";
-import * as storage from "./storage";
 
 /**
  * Get document.
