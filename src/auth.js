@@ -41,28 +41,22 @@ export const auth = async (config, username, password, token = "") => {
 /**
  * Register user.
  * @function
- * @param {string} username - Username.
- * @param {string} password - Password.
- * @param {string} name - Name.
+ * @param {Object} user - User.
  * @returns {Object} user.
  */
-export const register = async (config, username, password, name) => {
+export const register = async (config, user) => {
   const url = `${config.url.auth}/api/user`;
 
   const response = await fetch(url, {
     method: "POST",
     headers: core.getHeaders(),
-    body: JSON.stringify({
-      username,
-      password,
-      name
-    })
+    body: JSON.stringify(user)
   });
 
   if (response.status === 200) {
     return await response.json();
   } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await register(config, username, password, name);
+    return await register(config, user);
   } else {
     throw new Error(response.statusText);
   }

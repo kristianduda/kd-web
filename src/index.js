@@ -57,7 +57,7 @@ const auth = {
   getUserCached: (id) => a.getUserCached(_config, id),
   getUser: (id) => a.getUser(_config, id),
   updateUser: (id, data) => a.updateUser(_config, id, data),
-  register: (username, password, name) => a.register(_config, username, password, name),
+  register: (user) => a.register(_config, user),
 }
 
 const ajax = {
