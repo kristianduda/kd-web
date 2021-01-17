@@ -49,15 +49,17 @@ export const register = async (config, user) => {
 
   const response = await fetch(url, {
     method: "POST",
-    headers: core.getHeaders(),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify(user)
   });
 
   if (response.status === 200) {
     return await response.json();
-  } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await register(config, user);
-  } else {
+  }
+  else {
     throw new Error(response.statusText);
   }
 };
