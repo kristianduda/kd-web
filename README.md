@@ -127,7 +127,8 @@ Delete documents in collection.
     * [.generateSecret()](#module_auth.generateSecret) ⇒ <code>Object</code>
     * [.sign(data)](#module_auth.sign) ⇒ <code>Object</code>
     * [.verify(data, signature)](#module_auth.verify) ⇒ <code>boolean</code>
-    * [.getUsers(filters)](#module_auth.getUsers) ⇒ <code>Object</code>
+    * [.getUsers(filters)](#module_auth.getUsers) ⇒ <code>Array</code>
+    * [.checkUser(username)](#module_auth.checkUser) ⇒ <code>Array</code>
     * [.getUserCached(id)](#module_auth.getUserCached) ⇒ <code>Object</code>
     * [.getUser(id)](#module_auth.getUser) ⇒ <code>Object</code>
     * [.updateUser(id)](#module_auth.updateUser) ⇒ <code>Object</code>
@@ -233,15 +234,27 @@ Verify data.
 
 <a name="module_auth.getUsers"></a>
 
-### auth.getUsers(filters) ⇒ <code>Object</code>
+### auth.getUsers(filters) ⇒ <code>Array</code>
 Get collection of users that match a specified filter.
 
 **Kind**: static method of [<code>auth</code>](#module_auth)  
-**Returns**: <code>Object</code> - collection of users.  
+**Returns**: <code>Array</code> - collection of users.  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | filters | <code>Array</code> | Filters. |
+
+<a name="module_auth.checkUser"></a>
+
+### auth.checkUser(username) ⇒ <code>Array</code>
+Check user.
+
+**Kind**: static method of [<code>auth</code>](#module_auth)  
+**Returns**: <code>Array</code> - collection of users.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| username | <code>string</code> | Username. |
 
 <a name="module_auth.getUserCached"></a>
 
