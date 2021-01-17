@@ -58,6 +58,7 @@ const auth = {
   getUser: (id) => a.getUser(_config, id),
   updateUser: (id, data) => a.updateUser(_config, id, data),
   register: (user) => a.register(_config, user),
+  checkUser: (username) => a.checkUser(_config, username)
 }
 
 const ajax = {

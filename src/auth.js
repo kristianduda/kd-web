@@ -237,7 +237,7 @@ export const verify = async (config, data, signature) => {
  * Get collection of users that match a specified filter.
  * @function
  * @param {Array} filters - Filters.
- * @returns {Object} collection of users.
+ * @returns {Array} collection of users.
  */
 export const getUsers = async (config, filters) => {
   const sort = { field: "name", dir: "asc" };
@@ -254,6 +254,30 @@ export const getUsers = async (config, filters) => {
     return res;
   } else if (response.status === 401 && (await core.refreshToken(config))) {
     return await getUsers(config, filters);
+  } else {
+    throw new Error(response.statusText);
+  }
+};
+
+/**
+ * Check user.
+ * @function
+ * @param {string} username - Username.
+ * @returns {Array} collection of users.
+ */
+export const checkUser = async (config, username) => {
+  const url = `${config.url.auth}/api/user/check?username=${username}`;
+
+  const response = await fetch(url, {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    }
+  });
+
+  if (response.status === 200) {
+    const res = await response.json();
+    return res;
   } else {
     throw new Error(response.statusText);
   }
