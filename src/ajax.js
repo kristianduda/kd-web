@@ -31,7 +31,7 @@ export const getById = async (config, url, id) => {
  * Get collection of documents that match a specified filter.
  * @function
  * @param {string} url - Url.
- * @param {Object=} filters - Filters.
+ * @param {Array=} filters - Filters.
  * @param {Object=} sort - Sort.
  * @param {Object=} page - Page.
  * @param {Object=} fields - Fields.

@@ -239,13 +239,16 @@ export const verify = async (config, data, signature) => {
  * Get collection of users that match a specified filter.
  * @function
  * @param {Array} filters - Filters.
+ * @param {Object=} sort - Sort.
+ * @param {Object=} page - Page.
  * @returns {Array} collection of users.
  */
-export const getUsers = async (config, filters) => {
-  const sort = { field: "name", dir: "asc" };
+export const getUsers = async (config, filters, sort = { field: "name", dir: "asc" }, page = core.DEFAULT_PAGE) => {
   const url = `${config.url.auth}/api/user?filters=${JSON.stringify(
     filters
-  )}&sort=${JSON.stringify(sort)}`;
+  )}&page=${JSON.stringify(page)}&sort=${JSON.stringify(
+    sort
+  )}`;
 
   const response = await fetch(url, {
     headers: core.getHeaders()
@@ -255,7 +258,7 @@ export const getUsers = async (config, filters) => {
     const res = await response.json();
     return res;
   } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await getUsers(config, filters);
+    return await getUsers(config, filters, sort, page);
   } else {
     throw new Error(response.statusText);
   }
