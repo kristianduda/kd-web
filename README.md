@@ -58,7 +58,7 @@ Get collection of documents that match a specified filter.
 | Param | Type | Description |
 | --- | --- | --- |
 | url | <code>string</code> | Url. |
-| [filters] | <code>Object</code> | Filters. |
+| [filters] | <code>Array</code> | Filters. |
 | [sort] | <code>Object</code> | Sort. |
 | [page] | <code>Object</code> | Page. |
 | [fields] | <code>Object</code> | Fields. |
@@ -127,7 +127,7 @@ Delete documents in collection.
     * [.generateSecret()](#module_auth.generateSecret) ⇒ <code>Object</code>
     * [.sign(data)](#module_auth.sign) ⇒ <code>Object</code>
     * [.verify(data, signature)](#module_auth.verify) ⇒ <code>boolean</code>
-    * [.getUsers(filters)](#module_auth.getUsers) ⇒ <code>Array</code>
+    * [.getUsers(filters, [sort], [page])](#module_auth.getUsers) ⇒ <code>Array</code>
     * [.checkUser(username)](#module_auth.checkUser) ⇒ <code>Array</code>
     * [.getUserCached(id)](#module_auth.getUserCached) ⇒ <code>Object</code>
     * [.getUser(id)](#module_auth.getUser) ⇒ <code>Object</code>
@@ -234,7 +234,7 @@ Verify data.
 
 <a name="module_auth.getUsers"></a>
 
-### auth.getUsers(filters) ⇒ <code>Array</code>
+### auth.getUsers(filters, [sort], [page]) ⇒ <code>Array</code>
 Get collection of users that match a specified filter.
 
 **Kind**: static method of [<code>auth</code>](#module_auth)  
@@ -243,6 +243,8 @@ Get collection of users that match a specified filter.
 | Param | Type | Description |
 | --- | --- | --- |
 | filters | <code>Array</code> | Filters. |
+| [sort] | <code>Object</code> | Sort. |
+| [page] | <code>Object</code> | Page. |
 
 <a name="module_auth.checkUser"></a>
 
