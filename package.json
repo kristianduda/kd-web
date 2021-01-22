@@ -4,9 +4,8 @@
   "description": "",
   "main": "dist/kd.js",
   "scripts": {
-    "build": "webpack",
-    "test": "jest",
-    "doc": "jsdoc2md src/*.js > README.md"
+    "build": "webpack && jsdoc2md src/*.js > README.md",
+    "test": "jest"
   },
   "author": "Kristian Duda",
   "license": "ISC",
