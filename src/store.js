@@ -40,6 +40,13 @@ export const postFile = async (config, file) => {
  * @returns {Object} file (octet-stream).
  */
 export const getFile = async (config, id) => {
+  const cacheKey = 'file/' +id;
+  const cacheStorage = await caches.open('kd-cache');
+  const cachedResponse = await cacheStorage.match(cacheKey);
+  if(cachedResponse) {
+    return await cachedResponse.blob();
+  }
+
   const url = `${config.url.store}/api/file/${id}`;
 
   const response = await fetch(url, {
@@ -50,6 +57,7 @@ export const getFile = async (config, id) => {
   });
 
   if (response.status === 200) {
+    cacheStorage.put(cacheKey, response.clone());
     return await response.blob();
   } else if (response.status === 401 && (await core.refreshToken(config))) {
     return await getFile(config, id);
