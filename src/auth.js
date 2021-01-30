@@ -288,7 +288,6 @@ export const checkUser = async (config, username) => {
   }
 };
 
-const userCache = {};
 /**
  * Get user from cache.
  * @function
@@ -296,13 +295,28 @@ const userCache = {};
  * @returns {Object} user.
  */
 export const getUserCached = async (config, id) => {
-  try {
-    if (!userCache[id]) {
-      userCache[id] = await getUser(config, id);
-    }
-    return userCache[id];
-  } catch (error) {
-    throw error;
+  const cacheKey = 'user/' +id;
+  const cacheStorage = await caches.open('kd-cache');
+  const cachedResponse = await cacheStorage.match(cacheKey);
+  if(cachedResponse) {
+    return await cachedResponse.json();
+  }
+
+  const url = `${config.url.auth}/api/user/${id}`;
+
+  const response = await fetch(url, {
+    headers: core.getHeaders()
+  });
+
+  if (response.status === 200) {
+    cacheStorage.put(cacheKey, response.clone());
+    return await response.json();
+  } else if (response.status === 404) {
+    return null;
+  } else if (response.status === 401 && (await core.refreshToken(config))) {
+    return await getUser(config, id);
+  } else {
+    throw new Error(response.statusText);
   }
 };
 
