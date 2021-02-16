@@ -1,12 +1,14 @@
 import * as s from "./store";
 import * as a from "./auth";
 import * as x from './ajax';
+import * as m from './mail';
 import * as storage from "./storage";
 
 const DEFAULT_CONFIG = {
   url: {
     store: "https://stored.azurewebsites.net",
-    auth: "https://storeauth.azurewebsites.net"
+    auth: "https://storeauth.azurewebsites.net",
+    mail: "https://storemail.azurewebsites.net"
   },
   key: null
 }
@@ -70,4 +72,8 @@ const ajax = {
   del: (url, filters) => x.del(_config, url, filters),
 }
 
-export { init, getConfig, store, auth, storage, ajax };
+const mail = {
+  send: (data) => m.send(_config, data),
+}
+
+export { init, getConfig, store, auth, mail, storage, ajax };
