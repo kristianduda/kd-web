@@ -5,6 +5,8 @@
 <dd></dd>
 <dt><a href="#module_auth">auth</a></dt>
 <dd></dd>
+<dt><a href="#module_mail">mail</a></dt>
+<dd></dd>
 <dt><a href="#module_storage">storage</a></dt>
 <dd></dd>
 <dt><a href="#module_store">store</a></dt>
@@ -294,6 +296,20 @@ Update user.
 | Param | Type | Description |
 | --- | --- | --- |
 | id | <code>string</code> | User id. |
+
+<a name="module_mail"></a>
+
+## mail
+<a name="module_mail.send"></a>
+
+### mail.send(data)
+Send mail.
+
+**Kind**: static method of [<code>mail</code>](#module_mail)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | <code>Object</code> | Data. |
 
 <a name="module_storage"></a>
 
