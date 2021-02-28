@@ -9,5 +9,5 @@ import * as ajax from "./ajax";
  */
 export const send = (config, data) => {
   const url = `${config.url.mail}/api/mail`;
-  return ajax.post(config, data);
+  return ajax.post(config, url, data);
 };
