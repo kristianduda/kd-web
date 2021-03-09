@@ -123,6 +123,7 @@ Delete documents in collection.
 * [auth](#module_auth)
     * [.auth(username, password, [token])](#module_auth.auth) ⇒ <code>Object</code>
     * [.register(user)](#module_auth.register) ⇒ <code>Object</code>
+    * [.subscribe(subscriber)](#module_auth.subscribe) ⇒ <code>Object</code>
     * [.oAuth(provider, code, redirectUri, [configId])](#module_auth.oAuth) ⇒ <code>Object</code>
     * [.reset(username, redirectUri)](#module_auth.reset)
     * [.updateOauth(provider, code, redirectUri)](#module_auth.updateOauth) ⇒ <code>Object</code>
@@ -160,6 +161,18 @@ Register user.
 | Param | Type | Description |
 | --- | --- | --- |
 | user | <code>Object</code> | User. |
+
+<a name="module_auth.subscribe"></a>
+
+### auth.subscribe(subscriber) ⇒ <code>Object</code>
+Subscribe.
+
+**Kind**: static method of [<code>auth</code>](#module_auth)  
+**Returns**: <code>Object</code> - user.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| subscriber | <code>Object</code> | Subscriber. |
 
 <a name="module_auth.oAuth"></a>
 

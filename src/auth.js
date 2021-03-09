@@ -65,6 +65,32 @@ export const register = async (config, user) => {
 };
 
 /**
+ * Subscribe.
+ * @function
+ * @param {Object} subscriber - Subscriber.
+ * @returns {Object} user.
+ */
+export const subscribe = async (config, subscriber) => {
+  const url = `${config.url.auth}/api/user/subscriber`;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(subscriber)
+  });
+
+  if (response.status === 200) {
+    return await response.json();
+  }
+  else {
+    throw new Error(response.statusText);
+  }
+};
+
+/**
  * Authenticate user.
  * @function
  * @param {number} provider - Provider.
