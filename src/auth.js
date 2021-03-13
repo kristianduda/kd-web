@@ -2,6 +2,7 @@
 
 import * as core from "./core";
 import * as storage from "./storage";
+import * as ajax from './ajax';
 
 /**
  * Authenticate user.
@@ -71,7 +72,7 @@ export const register = async (config, user) => {
  * @returns {Object} user.
  */
 export const subscribe = async (config, subscriber) => {
-  const url = `${config.url.auth}/api/user/subscriber`;
+  const url = `${config.url.auth}/api/subscriber`;
 
   const response = await fetch(url, {
     method: "POST",
@@ -88,6 +89,35 @@ export const subscribe = async (config, subscriber) => {
   else {
     throw new Error(response.statusText);
   }
+};
+
+/**
+ * Get subscriber.
+ * @function
+ * @param {string} id - Subscriber id.
+ * @returns {Object} subscriber.
+ */
+export const getSubscriber = (config, id) => {
+  const url = `${config.url.auth}/api/subscriber`;
+  return ajax.getById(config, url, id);
+};
+
+/**
+ * Get collection of subscribers that match a specified filter.
+ * @function
+ * @param {Object=} filters - Filters.
+ * @param {Object=} sort - Sort.
+ * @param {Object=} page - Page.
+ * @returns {Object} collection of subscribers.
+ */
+export const getSubscribers = (
+  config,
+  filters = core.DEFAULT_FILTERS,
+  sort = core.DEFAULT_SORT,
+  page = core.DEFAULT_PAGE
+) => {
+  const url = `${config.url.auth}/api/subscriber`;
+  return ajax.get(config, url, filters, sort, page, core.DEFAULT_FIELDS);
 };
 
 /**

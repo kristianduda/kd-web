@@ -124,6 +124,8 @@ Delete documents in collection.
     * [.auth(username, password, [token])](#module_auth.auth) ⇒ <code>Object</code>
     * [.register(user)](#module_auth.register) ⇒ <code>Object</code>
     * [.subscribe(subscriber)](#module_auth.subscribe) ⇒ <code>Object</code>
+    * [.getSubscriber(id)](#module_auth.getSubscriber) ⇒ <code>Object</code>
+    * [.getSubscribers([filters], [sort], [page])](#module_auth.getSubscribers) ⇒ <code>Object</code>
     * [.oAuth(provider, code, redirectUri, [configId])](#module_auth.oAuth) ⇒ <code>Object</code>
     * [.reset(username, redirectUri)](#module_auth.reset)
     * [.updateOauth(provider, code, redirectUri)](#module_auth.updateOauth) ⇒ <code>Object</code>
@@ -173,6 +175,32 @@ Subscribe.
 | Param | Type | Description |
 | --- | --- | --- |
 | subscriber | <code>Object</code> | Subscriber. |
+
+<a name="module_auth.getSubscriber"></a>
+
+### auth.getSubscriber(id) ⇒ <code>Object</code>
+Get subscriber.
+
+**Kind**: static method of [<code>auth</code>](#module_auth)  
+**Returns**: <code>Object</code> - subscriber.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>string</code> | Subscriber id. |
+
+<a name="module_auth.getSubscribers"></a>
+
+### auth.getSubscribers([filters], [sort], [page]) ⇒ <code>Object</code>
+Get collection of subscribers that match a specified filter.
+
+**Kind**: static method of [<code>auth</code>](#module_auth)  
+**Returns**: <code>Object</code> - collection of subscribers.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [filters] | <code>Object</code> | Filters. |
+| [sort] | <code>Object</code> | Sort. |
+| [page] | <code>Object</code> | Page. |
 
 <a name="module_auth.oAuth"></a>
 
