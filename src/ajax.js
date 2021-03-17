@@ -129,9 +129,8 @@ export const post = async (config, url, data) => {
 export const getFile = async (config, url, id) => {
   const u = `${url}/${id}`;
 
-  const cacheKey = 'file/' +id;
   const cacheStorage = await caches.open('kd-cache');
-  const cachedResponse = await cacheStorage.match(cacheKey);
+  const cachedResponse = await cacheStorage.match(u);
   if(cachedResponse) {
     return await cachedResponse.blob();
   }
@@ -139,12 +138,12 @@ export const getFile = async (config, url, id) => {
   const response = await fetch(u, {
     method: "GET",
     headers: {
-      Authorization: "Bearer " + storage.getUser().token
+      Authorization: "Bearer " +core.getToken()
     }
   });
 
   if (response.status === 200) {
-    cacheStorage.put(cacheKey, response.clone());
+    cacheStorage.put(u, response.clone());
     return await response.blob();
   } else if (response.status === 401 && (await core.refreshToken(config))) {
     return await getFile(config, url, id);

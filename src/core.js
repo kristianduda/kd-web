@@ -15,6 +15,11 @@ export const getHeaders = () => {
   };
 };
 
+export const getToken = () => {
+  var user = storage.getUser();
+  return user ? user.token : null;
+}
+
 export const refreshToken = async config => {
   const url = `${config.url.auth}/api/User/refresh`;
   const user = storage.getUser();
