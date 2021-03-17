@@ -120,6 +120,40 @@ export const post = async (config, url, data) => {
 };
 
 /**
+ * Get file.
+ * @function
+ * @param {string} url - Url.
+ * @param {string} id - File id.
+ * @returns {Object} file (octet-stream).
+ */
+export const getFile = async (config, url, id) => {
+  const u = `${url}/${id}`;
+
+  const cacheKey = 'file/' +id;
+  const cacheStorage = await caches.open('kd-cache');
+  const cachedResponse = await cacheStorage.match(cacheKey);
+  if(cachedResponse) {
+    return await cachedResponse.blob();
+  }
+
+  const response = await fetch(u, {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + storage.getUser().token
+    }
+  });
+
+  if (response.status === 200) {
+    cacheStorage.put(cacheKey, response.clone());
+    return await response.blob();
+  } else if (response.status === 401 && (await core.refreshToken(config))) {
+    return await getFile(config, url, id);
+  } else {
+    throw new Error(response.statusText);
+  }
+};
+
+/**
  * Delete document in collection.
  * @function
  * @param {string} url - Url.

@@ -33,6 +33,7 @@
     * [.get(url, [filters], [sort], [page], [fields])](#module_ajax.get) ⇒ <code>Object</code>
     * [.put(url, data, id)](#module_ajax.put) ⇒ <code>Object</code>
     * [.post(url, data)](#module_ajax.post) ⇒ <code>Object</code>
+    * [.getFile(url, id)](#module_ajax.getFile) ⇒ <code>Object</code>
     * [.delById(url, id)](#module_ajax.delById)
     * [.del(url, filters)](#module_ajax.del)
 
@@ -91,6 +92,19 @@ Insert document to collection.
 | --- | --- | --- |
 | url | <code>string</code> | Url. |
 | data | <code>Object</code> | Data. |
+
+<a name="module_ajax.getFile"></a>
+
+### ajax.getFile(url, id) ⇒ <code>Object</code>
+Get file.
+
+**Kind**: static method of [<code>ajax</code>](#module_ajax)  
+**Returns**: <code>Object</code> - file (octet-stream).  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| url | <code>string</code> | Url. |
+| id | <code>string</code> | File id. |
 
 <a name="module_ajax.delById"></a>
 

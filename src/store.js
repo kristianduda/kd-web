@@ -39,31 +39,9 @@ export const postFile = async (config, file) => {
  * @param {string} id - File id.
  * @returns {Object} file (octet-stream).
  */
-export const getFile = async (config, id) => {
-  const cacheKey = 'file/' +id;
-  const cacheStorage = await caches.open('kd-cache');
-  const cachedResponse = await cacheStorage.match(cacheKey);
-  if(cachedResponse) {
-    return await cachedResponse.blob();
-  }
-
-  const url = `${config.url.store}/api/file/${id}`;
-
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + storage.getUser().token
-    }
-  });
-
-  if (response.status === 200) {
-    cacheStorage.put(cacheKey, response.clone());
-    return await response.blob();
-  } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await getFile(config, id);
-  } else {
-    throw new Error(response.statusText);
-  }
+export const getFile = (config, id) => {
+  const url = `${config.url.store}/api/file`;
+  return ajax.getFile(config, url, id);
 };
 
 /**
