@@ -355,6 +355,12 @@ Update user.
 <a name="module_mail"></a>
 
 ## mail
+
+* [mail](#module_mail)
+    * [.send(data)](#module_mail.send)
+    * [.read(id)](#module_mail.read)
+    * [.get([filters], [sort], [page])](#module_mail.get) ⇒ <code>Object</code>
+
 <a name="module_mail.send"></a>
 
 ### mail.send(data)
@@ -365,6 +371,31 @@ Send mail.
 | Param | Type | Description |
 | --- | --- | --- |
 | data | <code>Object</code> | Data. |
+
+<a name="module_mail.read"></a>
+
+### mail.read(id)
+Mark as read.
+
+**Kind**: static method of [<code>mail</code>](#module_mail)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>string</code> | id. |
+
+<a name="module_mail.get"></a>
+
+### mail.get([filters], [sort], [page]) ⇒ <code>Object</code>
+Get collection of mails that match a specified filter.
+
+**Kind**: static method of [<code>mail</code>](#module_mail)  
+**Returns**: <code>Object</code> - collection of mails.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [filters] | <code>Array</code> | Filters. |
+| [sort] | <code>Object</code> | Sort. |
+| [page] | <code>Object</code> | Page. |
 
 <a name="module_storage"></a>
 

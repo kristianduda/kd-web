@@ -78,6 +78,8 @@ const ajax = {
 
 const mail = {
   send: (data) => m.send(_config, data),
+  get: (filters, sort, page) => m.get(_config, filters, sort, page),
+  read: (id) => m.read(_config, id)
 }
 
 export { init, getConfig, store, auth, mail, storage, ajax };
