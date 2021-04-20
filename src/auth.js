@@ -236,62 +236,6 @@ export const generateSecret = async config => {
 };
 
 /**
- * Sign data.
- * @function
- * @param {string} data - Data.
- * @returns {Object} data.
- */
-export const sign = async (config, data) => {
-  const url = `${config.url.auth}/api/user/sign?withQrCode=true`;
-
-  const response = await fetch(url, {
-    method: "POST",
-    headers: core.getHeaders(),
-    body: JSON.stringify({
-      data
-    })
-  });
-
-  if (response.status === 200) {
-    return await response.json();
-  } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await sign(config, data);
-  } else {
-    throw new Error(response.statusText);
-  }
-};
-
-/**
- * Verify data.
- * @function
- * @param {string} data - Data.
- * @param {string} signature - Signature.
- * @returns {boolean} res.
- */
-export const verify = async (config, data, signature) => {
-  const url = `${config.url.auth}/api/user/verify`;
-
-  const response = await fetch(url, {
-    method: "POST",
-    headers: core.getHeaders(),
-    body: JSON.stringify({
-      data,
-      signature
-    })
-  });
-
-  if (response.status === 200) {
-    return true;
-  } else if (response.status === 400) {
-    return false;
-  } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await verify(config, data, signature);
-  } else {
-    throw new Error(response.statusText);
-  }
-};
-
-/**
  * Get collection of users that match a specified filter.
  * @function
  * @param {Array} filters - Filters.
