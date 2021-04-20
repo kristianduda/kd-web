@@ -144,8 +144,6 @@ Delete documents in collection.
     * [.reset(username, redirectUri)](#module_auth.reset)
     * [.updateOauth(provider, code, redirectUri)](#module_auth.updateOauth) ⇒ <code>Object</code>
     * [.generateSecret()](#module_auth.generateSecret) ⇒ <code>Object</code>
-    * [.sign(data)](#module_auth.sign) ⇒ <code>Object</code>
-    * [.verify(data, signature)](#module_auth.verify) ⇒ <code>boolean</code>
     * [.getUsers(filters, [sort], [page])](#module_auth.getUsers) ⇒ <code>Array</code>
     * [.checkUser(username)](#module_auth.checkUser) ⇒ <code>Array</code>
     * [.getUserCached(id)](#module_auth.getUserCached) ⇒ <code>Object</code>
@@ -264,31 +262,6 @@ Generate secret.
 
 **Kind**: static method of [<code>auth</code>](#module_auth)  
 **Returns**: <code>Object</code> - secret.  
-<a name="module_auth.sign"></a>
-
-### auth.sign(data) ⇒ <code>Object</code>
-Sign data.
-
-**Kind**: static method of [<code>auth</code>](#module_auth)  
-**Returns**: <code>Object</code> - data.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| data | <code>string</code> | Data. |
-
-<a name="module_auth.verify"></a>
-
-### auth.verify(data, signature) ⇒ <code>boolean</code>
-Verify data.
-
-**Kind**: static method of [<code>auth</code>](#module_auth)  
-**Returns**: <code>boolean</code> - res.  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| data | <code>string</code> | Data. |
-| signature | <code>string</code> | Signature. |
-
 <a name="module_auth.getUsers"></a>
 
 ### auth.getUsers(filters, [sort], [page]) ⇒ <code>Array</code>
