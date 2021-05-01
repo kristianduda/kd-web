@@ -160,10 +160,10 @@ export const oAuth = async (config, provider, code, redirectUri, configId = null
 /**
  * Reset password.
  * @function
- * @param {string} username - Username.
+ * @param {object} data - Data.
  * @param {string} redirectUri - Redirect uri.
  */
-export const reset = async (config, username, redirectUri) => {
+export const reset = async (config, data) => {
   const url = `${config.url.auth}/api/user/reset`;
 
   const response = await fetch(url, {
@@ -172,10 +172,7 @@ export const reset = async (config, username, redirectUri) => {
       Accept: "application/json",
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      username,
-      redirectUri: redirectUri
-    })
+    body: JSON.stringify(data)
   });
 
   if (response.status !== 200) {

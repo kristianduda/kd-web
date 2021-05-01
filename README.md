@@ -141,7 +141,7 @@ Delete documents in collection.
     * [.getSubscriber(id)](#module_auth.getSubscriber) ⇒ <code>Object</code>
     * [.getSubscribers([filters], [sort], [page])](#module_auth.getSubscribers) ⇒ <code>Object</code>
     * [.oAuth(provider, code, redirectUri, [configId])](#module_auth.oAuth) ⇒ <code>Object</code>
-    * [.reset(username, redirectUri)](#module_auth.reset)
+    * [.reset(data, redirectUri)](#module_auth.reset)
     * [.updateOauth(provider, code, redirectUri)](#module_auth.updateOauth) ⇒ <code>Object</code>
     * [.generateSecret()](#module_auth.generateSecret) ⇒ <code>Object</code>
     * [.getUsers(filters, [sort], [page])](#module_auth.getUsers) ⇒ <code>Array</code>
@@ -231,14 +231,14 @@ Authenticate user.
 
 <a name="module_auth.reset"></a>
 
-### auth.reset(username, redirectUri)
+### auth.reset(data, redirectUri)
 Reset password.
 
 **Kind**: static method of [<code>auth</code>](#module_auth)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| username | <code>string</code> | Username. |
+| data | <code>object</code> | Data. |
 | redirectUri | <code>string</code> | Redirect uri. |
 
 <a name="module_auth.updateOauth"></a>
