@@ -10,7 +10,7 @@ import * as core from "./core";
  * @param {Object=} params - Params.
  * @returns {Object} document.
  */
-export const getById = async (config, url, id, params = null) => {
+export const getById = async (config, url, id, params = undefined) => {
   const u = `${url}/${id}?${core.buildParams(params)}`;
 
   const response = await fetch(u, {
@@ -46,7 +46,7 @@ export const get = async (
   sort = core.DEFAULT_SORT,
   page = core.DEFAULT_PAGE,
   fields = core.DEFAULT_FIELDS,
-  params = null
+  params = undefined
 ) => {
   const u = `${url}?filters=${JSON.stringify(
     filters
@@ -81,7 +81,7 @@ export const get = async (
  * @param {Object=} params - Params.
  * @returns {Object} document.
  */
-export const put = async (config, url, data, id, params = null) => {
+export const put = async (config, url, data, id, params = undefined) => {
   const u = `${url}/${id}?${core.buildParams(params)}`;
   const response = await fetch(u, {
     method: "PUT",
@@ -106,7 +106,7 @@ export const put = async (config, url, data, id, params = null) => {
  * @param {Object=} params - Params.
  * @returns {Object} document.
  */
-export const post = async (config, url, data, params = null) => {
+export const post = async (config, url, data, params = undefined) => {
   const u = `${url}?${core.buildParams(params)}`;
 
   const response = await fetch(u, {
@@ -164,7 +164,7 @@ export const getFile = async (config, url, id) => {
  * @param {string} id - Document Id.
  * @param {Object=} params - Params.
  */
-export const delById = async (config, url, id, params = null) => {
+export const delById = async (config, url, id, params = undefined) => {
   const u = `${url}/${id}?${core.buildParams(params)}`;
 
   const response = await fetch(u, {
@@ -187,7 +187,7 @@ export const delById = async (config, url, id, params = null) => {
  * @param {Object} filters - Filters.
  * @param {Object=} params - Params.
  */
-export const del = async (config, url, filters, params = null) => {
+export const del = async (config, url, filters, params = undefined) => {
   const u = `${url}?filters=${JSON.stringify(filters)}&${core.buildParams(params)}`;
 
   const response = await fetch(u, {
