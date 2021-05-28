@@ -7,10 +7,11 @@ import * as core from "./core";
  * @function
  * @param {string} url - Url.
  * @param {string} id - Document id.
+ * @param {Object=} params - Params.
  * @returns {Object} document.
  */
-export const getById = async (config, url, id) => {
-  const u = `${url}/${id}`;
+export const getById = async (config, url, id, params = null) => {
+  const u = `${url}/${id}?${core.buildParams(params)}`;
 
   const response = await fetch(u, {
     headers: core.getHeaders()
@@ -21,7 +22,7 @@ export const getById = async (config, url, id) => {
   } else if (response.status === 404) {
     return null;
   } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await getById(config, url, id);
+    return await getById(config, url, id, params);
   } else {
     throw new Error(response.statusText);
   }
@@ -35,6 +36,7 @@ export const getById = async (config, url, id) => {
  * @param {Object=} sort - Sort.
  * @param {Object=} page - Page.
  * @param {Object=} fields - Fields.
+ * @param {Object=} params - Params.
  * @returns {Object} collection of documents.
  */
 export const get = async (
@@ -43,13 +45,14 @@ export const get = async (
   filters = core.DEFAULT_FILTERS,
   sort = core.DEFAULT_SORT,
   page = core.DEFAULT_PAGE,
-  fields = core.DEFAULT_FIELDS
+  fields = core.DEFAULT_FIELDS,
+  params = null
 ) => {
   const u = `${url}?filters=${JSON.stringify(
     filters
   )}&page=${JSON.stringify(page)}&sort=${JSON.stringify(
     sort
-  )}&fields=${JSON.stringify(fields)}`;
+  )}&fields=${JSON.stringify(fields)}&${core.buildParams(params)}`;
 
   const response = await fetch(u, {
     headers: core.getHeaders()
@@ -63,7 +66,7 @@ export const get = async (
     res.fields = fields;
     return res;
   } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await get(config, url, filters, sort, page, fields);
+    return await get(config, url, filters, sort, page, fields, params);
   } else {
     throw new Error(response.statusText);
   }
@@ -75,10 +78,11 @@ export const get = async (
  * @param {string} url - Url.
  * @param {Object} data - Data.
  * @param {string} id - Document id.
+ * @param {Object=} params - Params.
  * @returns {Object} document.
  */
-export const put = async (config, url, data, id) => {
-  const u = `${url}/${id}`;
+export const put = async (config, url, data, id, params = null) => {
+  const u = `${url}/${id}?${core.buildParams(params)}`;
   const response = await fetch(u, {
     method: "PUT",
     headers: core.getHeaders(),
@@ -88,7 +92,7 @@ export const put = async (config, url, data, id) => {
   if (response.status === 200) {
     return await response.json();
   } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await put(config, url, data, id);
+    return await put(config, url, data, id, params);
   } else {
     throw new Error(response.statusText);
   }
@@ -99,10 +103,11 @@ export const put = async (config, url, data, id) => {
  * @function
  * @param {string} url - Url.
  * @param {Object} data - Data.
+ * @param {Object=} params - Params.
  * @returns {Object} document.
  */
-export const post = async (config, url, data) => {
-  const u = `${url}`;
+export const post = async (config, url, data, params = null) => {
+  const u = `${url}?${core.buildParams(params)}`;
 
   const response = await fetch(u, {
     method: "POST",
@@ -113,7 +118,7 @@ export const post = async (config, url, data) => {
   if (response.status === 200) {
     return await response.json();
   } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await post(config, url, data);
+    return await post(config, url, data, params);
   } else {
     throw new Error(response.statusText);
   }
@@ -157,9 +162,10 @@ export const getFile = async (config, url, id) => {
  * @function
  * @param {string} url - Url.
  * @param {string} id - Document Id.
+ * @param {Object=} params - Params.
  */
-export const delById = async (config, url, id) => {
-  const u = `${url}/${id}`;
+export const delById = async (config, url, id, params = null) => {
+  const u = `${url}/${id}?${core.buildParams(params)}`;
 
   const response = await fetch(u, {
     method: "DELETE",
@@ -168,7 +174,7 @@ export const delById = async (config, url, id) => {
 
   if (response.status === 200) {
   } else if (response.status === 401 && (await core.refreshToken(config))) {
-    await delById(config, url, id);
+    await delById(config, url, id, params);
   } else {
     throw new Error(response.statusText);
   }
@@ -179,9 +185,10 @@ export const delById = async (config, url, id) => {
  * @function
  * @param {string} url - Url.
  * @param {Object} filters - Filters.
+ * @param {Object=} params - Params.
  */
-export const del = async (config, url, filters) => {
-  const u = `${url}?filters=${JSON.stringify(filters)}`;
+export const del = async (config, url, filters, params = null) => {
+  const u = `${url}?filters=${JSON.stringify(filters)}&${core.buildParams(params)}`;
 
   const response = await fetch(u, {
     method: "DELETE",
@@ -190,7 +197,7 @@ export const del = async (config, url, filters) => {
 
   if (response.status === 200) {
   } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await del(config, url, filters);
+    return await del(config, url, filters, params);
   } else {
     throw new Error(response.statusText);
   }

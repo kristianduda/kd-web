@@ -29,17 +29,17 @@
 ## ajax
 
 * [ajax](#module_ajax)
-    * [.getById(url, id)](#module_ajax.getById) ⇒ <code>Object</code>
-    * [.get(url, [filters], [sort], [page], [fields])](#module_ajax.get) ⇒ <code>Object</code>
-    * [.put(url, data, id)](#module_ajax.put) ⇒ <code>Object</code>
-    * [.post(url, data)](#module_ajax.post) ⇒ <code>Object</code>
+    * [.getById(url, id, [params])](#module_ajax.getById) ⇒ <code>Object</code>
+    * [.get(url, [filters], [sort], [page], [fields], [params])](#module_ajax.get) ⇒ <code>Object</code>
+    * [.put(url, data, id, [params])](#module_ajax.put) ⇒ <code>Object</code>
+    * [.post(url, data, [params])](#module_ajax.post) ⇒ <code>Object</code>
     * [.getFile(url, id)](#module_ajax.getFile) ⇒ <code>Object</code>
-    * [.delById(url, id)](#module_ajax.delById)
-    * [.del(url, filters)](#module_ajax.del)
+    * [.delById(url, id, [params])](#module_ajax.delById)
+    * [.del(url, filters, [params])](#module_ajax.del)
 
 <a name="module_ajax.getById"></a>
 
-### ajax.getById(url, id) ⇒ <code>Object</code>
+### ajax.getById(url, id, [params]) ⇒ <code>Object</code>
 Get document.
 
 **Kind**: static method of [<code>ajax</code>](#module_ajax)  
@@ -49,10 +49,11 @@ Get document.
 | --- | --- | --- |
 | url | <code>string</code> | Url. |
 | id | <code>string</code> | Document id. |
+| [params] | <code>Object</code> | Params. |
 
 <a name="module_ajax.get"></a>
 
-### ajax.get(url, [filters], [sort], [page], [fields]) ⇒ <code>Object</code>
+### ajax.get(url, [filters], [sort], [page], [fields], [params]) ⇒ <code>Object</code>
 Get collection of documents that match a specified filter.
 
 **Kind**: static method of [<code>ajax</code>](#module_ajax)  
@@ -65,10 +66,11 @@ Get collection of documents that match a specified filter.
 | [sort] | <code>Object</code> | Sort. |
 | [page] | <code>Object</code> | Page. |
 | [fields] | <code>Object</code> | Fields. |
+| [params] | <code>Object</code> | Params. |
 
 <a name="module_ajax.put"></a>
 
-### ajax.put(url, data, id) ⇒ <code>Object</code>
+### ajax.put(url, data, id, [params]) ⇒ <code>Object</code>
 Update document in collection.
 
 **Kind**: static method of [<code>ajax</code>](#module_ajax)  
@@ -79,10 +81,11 @@ Update document in collection.
 | url | <code>string</code> | Url. |
 | data | <code>Object</code> | Data. |
 | id | <code>string</code> | Document id. |
+| [params] | <code>Object</code> | Params. |
 
 <a name="module_ajax.post"></a>
 
-### ajax.post(url, data) ⇒ <code>Object</code>
+### ajax.post(url, data, [params]) ⇒ <code>Object</code>
 Insert document to collection.
 
 **Kind**: static method of [<code>ajax</code>](#module_ajax)  
@@ -92,6 +95,7 @@ Insert document to collection.
 | --- | --- | --- |
 | url | <code>string</code> | Url. |
 | data | <code>Object</code> | Data. |
+| [params] | <code>Object</code> | Params. |
 
 <a name="module_ajax.getFile"></a>
 
@@ -108,7 +112,7 @@ Get file.
 
 <a name="module_ajax.delById"></a>
 
-### ajax.delById(url, id)
+### ajax.delById(url, id, [params])
 Delete document in collection.
 
 **Kind**: static method of [<code>ajax</code>](#module_ajax)  
@@ -117,10 +121,11 @@ Delete document in collection.
 | --- | --- | --- |
 | url | <code>string</code> | Url. |
 | id | <code>string</code> | Document Id. |
+| [params] | <code>Object</code> | Params. |
 
 <a name="module_ajax.del"></a>
 
-### ajax.del(url, filters)
+### ajax.del(url, filters, [params])
 Delete documents in collection.
 
 **Kind**: static method of [<code>ajax</code>](#module_ajax)  
@@ -129,6 +134,7 @@ Delete documents in collection.
 | --- | --- | --- |
 | url | <code>string</code> | Url. |
 | filters | <code>Object</code> | Filters. |
+| [params] | <code>Object</code> | Params. |
 
 <a name="module_auth"></a>
 

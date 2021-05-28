@@ -44,3 +44,7 @@ export const refreshToken = async config => {
     return false;
   }
 };
+
+export const buildParams = (params) => {
+  return new URLSearchParams(params).toString();
+}

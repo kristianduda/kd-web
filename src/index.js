@@ -65,12 +65,12 @@ const auth = {
 }
 
 const ajax = {
-  getById: (url, id) => x.getById(_config, url, id),
-  get: (url, filters, sort, page, fields) => x.get(_config, url, filters, sort, page, fields),
-  put: (url, data, id) => x.put(_config, url, data, id),
-  post: (url, data) => x.post(_config, url, data),
-  delById: (url, id) => x.delById(_config, url, id),
-  del: (url, filters) => x.del(_config, url, filters),
+  getById: (url, id, params) => x.getById(_config, url, id, params),
+  get: (url, filters, sort, page, fields, params) => x.get(_config, url, filters, sort, page, fields, params),
+  put: (url, data, id, params) => x.put(_config, url, data, id, params),
+  post: (url, data, params) => x.post(_config, url, data, params),
+  delById: (url, id, params) => x.delById(_config, url, id, params),
+  del: (url, filters, params) => x.del(_config, url, filters, params),
   getFile: (url, id) => x.getFile(_config, url, id)
 }
 
