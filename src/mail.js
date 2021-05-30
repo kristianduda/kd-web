@@ -19,8 +19,8 @@ export const send = (config, data) => {
  * @param {string} id - id.
  */
 export const read = (config, id) => {
-  const url = `${config.url.mail}/api/mail/read?id=${id}`;
-  return ajax.post(config, url, {});
+  const url = `${config.url.mail}/api/mail/read`;
+  return ajax.post(config, url, {}, { id });
 }
 
 /**
