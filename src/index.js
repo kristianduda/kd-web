@@ -35,7 +35,7 @@ const getConfig = () => {
 
 const store = {
   postFile: (file) => s.postFile(_config, file),
-  getFile: (id) => s.getFile(_config, id),
+  getFile: (id, useCache) => s.getFile(_config, id, useCache),
   delFile: (id) => s.delFile(_config, id),
   getById: (collection, id) => s.getById(_config, collection, id),
   get: (collection, filters, sort, page, fields) => s.get(_config, collection, filters, sort, page, fields),
@@ -71,7 +71,7 @@ const ajax = {
   post: (url, data, params) => x.post(_config, url, data, params),
   delById: (url, id, params) => x.delById(_config, url, id, params),
   del: (url, filters, params) => x.del(_config, url, filters, params),
-  getFile: (url, id) => x.getFile(_config, url, id)
+  getFile: (url, id, useCache) => x.getFile(_config, url, id, useCache)
 }
 
 const mail = {

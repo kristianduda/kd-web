@@ -37,11 +37,12 @@ export const postFile = async (config, file) => {
  * Get file.
  * @function
  * @param {string} id - File id.
+ * @param {boolean=} useCache - Use chache?
  * @returns {Object} file (octet-stream).
  */
-export const getFile = (config, id) => {
+export const getFile = (config, id, useCache = true) => {
   const url = `${config.url.store}/api/file`;
-  return ajax.getFile(config, url, id);
+  return ajax.getFile(config, url, id, useCache);
 };
 
 /**

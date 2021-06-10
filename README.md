@@ -33,7 +33,7 @@
     * [.get(url, [filters], [sort], [page], [fields], [params])](#module_ajax.get) ⇒ <code>Object</code>
     * [.put(url, data, id, [params])](#module_ajax.put) ⇒ <code>Object</code>
     * [.post(url, data, [params])](#module_ajax.post) ⇒ <code>Object</code>
-    * [.getFile(url, id)](#module_ajax.getFile) ⇒ <code>Object</code>
+    * [.getFile(url, id, [useCache])](#module_ajax.getFile) ⇒ <code>Object</code>
     * [.delById(url, id, [params])](#module_ajax.delById)
     * [.del(url, filters, [params])](#module_ajax.del)
 
@@ -99,7 +99,7 @@ Insert document to collection.
 
 <a name="module_ajax.getFile"></a>
 
-### ajax.getFile(url, id) ⇒ <code>Object</code>
+### ajax.getFile(url, id, [useCache]) ⇒ <code>Object</code>
 Get file.
 
 **Kind**: static method of [<code>ajax</code>](#module_ajax)  
@@ -109,6 +109,7 @@ Get file.
 | --- | --- | --- |
 | url | <code>string</code> | Url. |
 | id | <code>string</code> | File id. |
+| [useCache] | <code>boolean</code> | Use chache? |
 
 <a name="module_ajax.delById"></a>
 
@@ -415,7 +416,7 @@ Remove user from session storage.
 
 * [store](#module_store)
     * [.postFile(file)](#module_store.postFile) ⇒ <code>Object</code>
-    * [.getFile(id)](#module_store.getFile) ⇒ <code>Object</code>
+    * [.getFile(id, [useCache])](#module_store.getFile) ⇒ <code>Object</code>
     * [.delFile(id)](#module_store.delFile)
     * [.getById(collection, id)](#module_store.getById) ⇒ <code>Object</code>
     * [.get(collection, [filters], [sort], [page], [fields])](#module_store.get) ⇒ <code>Object</code>
@@ -440,7 +441,7 @@ Insert file.
 
 <a name="module_store.getFile"></a>
 
-### store.getFile(id) ⇒ <code>Object</code>
+### store.getFile(id, [useCache]) ⇒ <code>Object</code>
 Get file.
 
 **Kind**: static method of [<code>store</code>](#module_store)  
@@ -449,6 +450,7 @@ Get file.
 | Param | Type | Description |
 | --- | --- | --- |
 | id | <code>string</code> | File id. |
+| [useCache] | <code>boolean</code> | Use chache? |
 
 <a name="module_store.delFile"></a>
 
