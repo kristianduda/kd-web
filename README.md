@@ -33,7 +33,7 @@
     * [.get(url, [filters], [sort], [page], [fields], [params])](#module_ajax.get) ⇒ <code>Object</code>
     * [.put(url, data, id, [params])](#module_ajax.put) ⇒ <code>Object</code>
     * [.post(url, data, [params])](#module_ajax.post) ⇒ <code>Object</code>
-    * [.getFile(url, id, [useCache])](#module_ajax.getFile) ⇒ <code>Object</code>
+    * [.getFile(url, id, [useCache], [params])](#module_ajax.getFile) ⇒ <code>Object</code>
     * [.delById(url, id, [params])](#module_ajax.delById)
     * [.del(url, filters, [params])](#module_ajax.del)
 
@@ -99,7 +99,7 @@ Insert document to collection.
 
 <a name="module_ajax.getFile"></a>
 
-### ajax.getFile(url, id, [useCache]) ⇒ <code>Object</code>
+### ajax.getFile(url, id, [useCache], [params]) ⇒ <code>Object</code>
 Get file.
 
 **Kind**: static method of [<code>ajax</code>](#module_ajax)  
@@ -110,6 +110,7 @@ Get file.
 | url | <code>string</code> | Url. |
 | id | <code>string</code> | File id. |
 | [useCache] | <code>boolean</code> | Use chache? |
+| [params] | <code>Object</code> | Params. |
 
 <a name="module_ajax.delById"></a>
 
