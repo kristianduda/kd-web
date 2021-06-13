@@ -130,10 +130,11 @@ export const post = async (config, url, data, params = undefined) => {
  * @param {string} url - Url.
  * @param {string} id - File id.
  * @param {boolean=} useCache - Use chache?
+ * @param {Object=} params - Params.
  * @returns {Object} file (octet-stream).
  */
-export const getFile = async (config, url, id, useCache = true) => {
-  const u = `${url}/${id}`;
+export const getFile = async (config, url, id, useCache = true, params = undefined) => {
+  const u = `${url}/${id}?${core.buildParams(params)}`;
 
   if(useCache) {
     const cacheStorage = await caches.open('kd-cache');
@@ -156,7 +157,7 @@ export const getFile = async (config, url, id, useCache = true) => {
     }
     return await response.blob();
   } else if (response.status === 401 && (await core.refreshToken(config))) {
-    return await getFile(config, url, id, useCache);
+    return await getFile(config, url, id, useCache, params);
   } else {
     throw new Error(response.statusText);
   }

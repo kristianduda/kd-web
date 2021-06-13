@@ -71,7 +71,7 @@ const ajax = {
   post: (url, data, params) => x.post(_config, url, data, params),
   delById: (url, id, params) => x.delById(_config, url, id, params),
   del: (url, filters, params) => x.del(_config, url, filters, params),
-  getFile: (url, id, useCache) => x.getFile(_config, url, id, useCache)
+  getFile: (url, id, useCache, params) => x.getFile(_config, url, id, useCache, params)
 }
 
 const mail = {
