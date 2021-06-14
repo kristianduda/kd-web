@@ -136,8 +136,9 @@ export const post = async (config, url, data, params = undefined) => {
 export const getFile = async (config, url, id, useCache = true, params = undefined) => {
   const u = `${url}/${id}?${core.buildParams(params)}`;
 
+  let cacheStorage;
   if(useCache) {
-    const cacheStorage = await caches.open('kd-cache');
+    cacheStorage = await caches.open('kd-cache');
     const cachedResponse = await cacheStorage.match(u);
     if(cachedResponse) {
       return await cachedResponse.blob();
