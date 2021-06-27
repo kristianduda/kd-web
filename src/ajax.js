@@ -137,7 +137,7 @@ export const getFile = async (config, url, id, useCache = true, params = undefin
   const u = `${url}/${id}?${core.buildParams(params)}`;
 
   let cacheStorage;
-  if(useCache) {
+  if(useCache && caches) {
     cacheStorage = await caches.open('kd-cache');
     const cachedResponse = await cacheStorage.match(u);
     if(cachedResponse) {
@@ -153,7 +153,7 @@ export const getFile = async (config, url, id, useCache = true, params = undefin
   });
 
   if (response.status === 200) {
-    if(useCache) {
+    if(useCache && caches) {
       cacheStorage.put(u, response.clone());
     }
     return await response.blob();
