@@ -14,7 +14,7 @@ export const postFile = async (config, file) => {
   const url = `${config.url.store}/api/file`;
 
   const formData = new FormData();
-  formData.append("file", file);
+  formData.append("file", file, file.name);
 
   const response = await fetch(url, {
     method: "POST",
