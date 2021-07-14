@@ -170,8 +170,9 @@ export const getFile = async (config, url, id, useCache = true, params = undefin
  * @param {string} url - Url.
  * @param {string} id - Document Id.
  * @param {Object=} params - Params.
+ * @param {boolean=} withData - Returns data?
  */
-export const delById = async (config, url, id, params = undefined) => {
+export const delById = async (config, url, id, params = undefined, withData = false) => {
   const u = `${url}/${id}?${core.buildParams(params)}`;
 
   const response = await fetch(u, {
@@ -180,8 +181,11 @@ export const delById = async (config, url, id, params = undefined) => {
   });
 
   if (response.status === 200) {
+    if(withData) {
+      return await response.json();
+    }
   } else if (response.status === 401 && (await core.refreshToken(config))) {
-    await delById(config, url, id, params);
+    await delById(config, url, id, params, withData);
   } else {
     throw new Error(response.statusText);
   }

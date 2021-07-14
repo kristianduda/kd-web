@@ -34,7 +34,7 @@
     * [.put(url, data, id, [params])](#module_ajax.put) ⇒ <code>Object</code>
     * [.post(url, data, [params])](#module_ajax.post) ⇒ <code>Object</code>
     * [.getFile(url, id, [useCache], [params])](#module_ajax.getFile) ⇒ <code>Object</code>
-    * [.delById(url, id, [params])](#module_ajax.delById)
+    * [.delById(url, id, [params], [withData])](#module_ajax.delById)
     * [.del(url, filters, [params])](#module_ajax.del)
 
 <a name="module_ajax.getById"></a>
@@ -114,7 +114,7 @@ Get file.
 
 <a name="module_ajax.delById"></a>
 
-### ajax.delById(url, id, [params])
+### ajax.delById(url, id, [params], [withData])
 Delete document in collection.
 
 **Kind**: static method of [<code>ajax</code>](#module_ajax)  
@@ -124,6 +124,7 @@ Delete document in collection.
 | url | <code>string</code> | Url. |
 | id | <code>string</code> | Document Id. |
 | [params] | <code>Object</code> | Params. |
+| [withData] | <code>boolean</code> | Returns data? |
 
 <a name="module_ajax.del"></a>
 

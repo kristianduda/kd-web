@@ -69,7 +69,7 @@ const ajax = {
   get: (url, filters, sort, page, fields, params) => x.get(_config, url, filters, sort, page, fields, params),
   put: (url, data, id, params) => x.put(_config, url, data, id, params),
   post: (url, data, params) => x.post(_config, url, data, params),
-  delById: (url, id, params) => x.delById(_config, url, id, params),
+  delById: (url, id, params, withData) => x.delById(_config, url, id, params, withData),
   del: (url, filters, params) => x.del(_config, url, filters, params),
   getFile: (url, id, useCache, params) => x.getFile(_config, url, id, useCache, params)
 }
